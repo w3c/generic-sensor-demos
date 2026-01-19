@@ -55,7 +55,7 @@ gcloud app deploy app.yaml -v VERSION --project PROJECT_NAME
  + PROJECT_NAME should be the name of App Engine project.
 
 You could check deployed demo of the web application at https://ambientmap.appspot.com/ or
-pre-built [application here](https://intel.github.io/generic-sensor-demos/ambient-map/build/bundled)
+pre-built [application here](https://w3c.github.io/generic-sensor-demos/ambient-map/build/bundled)
 
 ## Google Maps API key
 
