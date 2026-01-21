@@ -1,0 +1,1 @@
+All contributions are licensed under the terms of the [3-Clause BSD License](LICENSE.md).
