@@ -141,8 +141,6 @@ If you are developing for mobile devices,set up
 [port forwarding](https://developers.google.com/web/tools/chrome-devtools/remote-debugging/local-server)
 for your local server, and you are good to go!
 
-## Reporting a security issue
-See Intel's [Security Center](https://www.intel.com/content/www/us/en/security-center/default.html)
-for information on how to report a potential security issue or vulnerability.
+## Contributing
 
-See also: [Security Policy](SECURITY.md)
+Everyone is welcome to contribute to this repository, improve the existing demos, or contribute new demos that demonstrate the capabilities of the Generic Sensor suite of specifications.
