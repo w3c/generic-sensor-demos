@@ -1,0 +1,70 @@
+name: Build Projects
+
+on:
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: build-and-commit
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 'lts/*'
+          cache: 'npm'
+
+      - name: Install Polymer CLI
+        run: npm install -g polymer-cli
+
+      - name: Build sensor-info
+        run: |
+          cd sensor-info
+          npm install
+          polymer build
+
+      - name: Build sensor-tester
+        run: |
+          cd sensor-tester
+          npm install
+          polymer build
+
+      - name: Build ambient-map
+        run: |
+          cd ambient-map
+          npm install
+          polymer build
+
+      - name: Build vr-button
+        run: |
+          cd vr-button
+          npm install
+          polymer build
+
+      - name: Configure Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Commit and push build artifacts
+        run: |
+          git add */build
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Build all projects [skip ci]"
+            git pull --rebase origin main
+            git push origin main
+          fi
